@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:23:42 by alafranc          #+#    #+#             */
-/*   Updated: 2020/11/15 15:26:15 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 10:16:50 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,18 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *)
 					, void (*del)(void *));
+int					ft_atoi_base(char *str, char *base);
+char				*ft_convert_base(char *nbr, char *base_from, char *base_to);
+int					ft_strlen_base(int nb, int base_to);
+int					is_base_valid(char *str);
+int					is_in_base(char c, char *base);
+int					ft_factorial(int nb);
+int					ft_power(int nb, int power);
+int					ft_sqrt(int nb);
+int					ft_is_prime(int nb);
+int					ft_find_next_prime(int nb);
+void				ft_putnbr_base(int nbr, char *base);
+void				ft_swap_int(int *a, int *b);
+void				ft_swap_char(char **ptr1, char **ptr2);
+char				*ft_strrev(char *str);
 #endif

@@ -6,29 +6,11 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:16:54 by alafranc          #+#    #+#             */
-/*   Updated: 2020/11/15 15:16:54 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 10:16:11 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_strrev(char *str)
-{
-	int		i;
-	int		size;
-	char	tmp;
-
-	size = ft_strlen(str);
-	i = 0;
-	while (i < size / 2)
-	{
-		tmp = str[i];
-		str[i] = str[size - 1 - i];
-		str[size - 1 - i] = tmp;
-		i++;
-	}
-	return (str);
-}
 
 static int	size_n(int nb)
 {
