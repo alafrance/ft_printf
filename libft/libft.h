@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 15:23:42 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/10 10:16:50 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/10 16:09:08 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,7 @@ void				ft_putnbr_base(int nbr, char *base);
 void				ft_swap_int(int *a, int *b);
 void				ft_swap_char(char **ptr1, char **ptr2);
 char				*ft_strrev(char *str);
+void				ft_putchar(char c);
+void				ft_putstr(char *str);
+void				ft_putnbr(int n);
 #endif
