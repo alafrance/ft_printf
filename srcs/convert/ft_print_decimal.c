@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:24:28 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/10 17:24:29 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 11:41:39 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_print_decimal(va_list ap)
 {
-    int nb;
+	int nb;
 
-    nb = va_arg(ap, int);
-    ft_putnbr(nb);
+	nb = va_arg(ap, int);
+	ft_putnbr(nb);
 }

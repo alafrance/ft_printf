@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:20:22 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/10 17:20:31 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 15:33:48 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	ft_print_udecimal(va_list ap)
 {
-    int nb;
+	int			nb;
+	long long	max;
+	int			count;
 
-    nb = va_arg(ap, int);
-
-    if (nb > 0)
-        ft_putnbr(nb);
-    else
-        ft_putstr("oula neg");
+	max = 4294967296;
+	nb = va_arg(ap, int);
+	if (nb < 0)
+		count = ft_putnbr_hexa_long_count(max + (long long)nb);
+	else
+		count = ft_putnbr_count(nb);
 }
