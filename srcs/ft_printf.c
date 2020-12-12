@@ -6,99 +6,65 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:28:19 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/11 18:07:14 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/12 19:32:37 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-const char *parse_flags_lmc(const char *format, t_flags *flags)
-{
-	int i;
 
-	i = 0;
-	if (*format == '0')
-	{
-		flags->display_zero = 1;
-		format++;
-	}
-	while(*format == '-')
-	{
-		flags->space_reverse = 1;
-		format++;
-	}
-	while (format[i] >= '0' && format[i] <= '9')
-	{
-		flags->lmc = flags->lmc * 10 + format[i] - '0';
-		i++;
-	}
-	return (format + i);
-}
-
-const char *parse_flags_precision(const char *format, t_flags *flags)
-{
-	int i;
-
-	i = 0;
-	if (format[i] == '.')
-	{
-		i++;
-		flags->nb_precision = 0;
-		while(format[i] >= '0' && format[i] <= '9')
-		{
-			flags->nb_precision = flags->nb_precision * 10 + format[i] - '0';
-			i++;
-		}
-	}
-	return (format + i);
-}
-
-void	ft_print_arg(const char *format, va_list ap)
+int			ft_print_arg(const char *format, va_list ap, t_flags flags)
 {
 	if (*format == 's')
-		ft_print_string(ap);
+		return (ft_print_string(ap, flags));
 	else if (*format == 'c')
-		ft_print_char(ap);
+		return (ft_print_char(ap, flags));
 	else if (*format == 'd' || *format == 'i')
-		ft_print_decimal(ap);
+		return (ft_print_decimal(ap, flags));
 	else if (*format == 'u')
-		ft_print_udecimal(ap);
+		return (ft_print_udecimal(ap, flags));
 	else if (*format == 'x')
-		ft_print_hexa(ap);
+		return (ft_print_hexa(ap, flags));
 	else if (*format == 'X')
-		ft_print_hexa_maj(ap);
+		return (ft_print_hexa_maj(ap, flags));
 	else if (*format == 'p')
-		ft_print_address(ap);
+		return (ft_print_address(ap, flags));
+	ft_putchar('%');
+	return (1);
 }
 
-int		ft_printf(const char *format, ...)
+void		ft_init_flags(t_flags *flags)
+{
+		flags->display_zero = 0;
+		flags->space_reverse = 0;
+		flags->lmc = 0;
+		flags->nb_precision = -1;
+}
+
+int			ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_flags flags;
+	int		count;
 
+	count = 0;
 	va_start(ap, format);
 	while (*format)
 	{
-		flags.display_zero = 0;
-		flags.space_reverse = 0;
-		flags.lmc = 0;
-		flags.nb_precision = -1;
+		ft_init_flags(&flags);
 		if (*format == '%')
 		{
 			format++;
-			format = parse_flags_lmc(format, &flags);
-			format = parse_flags_precision(format, &flags);
-			printf("display_zero: %d\n", flags.display_zero);
-			printf("space_reverse: %d\n", flags.space_reverse);
-			printf("lmc: %d\n", flags.lmc);
-			printf("nb_precision: %d\n", flags.nb_precision);
-			ft_print_arg(format, ap);
+			format = parse_flags_lmc(format, &flags, ap);
+			format = parse_flags_precision(format, &flags, ap);
+			count += ft_print_arg(format, ap, flags);
 		}
 		else
+		{
 			ft_putchar_fd(*format, 1);
+			count++;
+		}
 		format++;
 	}
 	va_end(ap);
-	
-	return (1);
+	return (count);
 }

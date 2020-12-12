@@ -12,10 +12,14 @@
 
 #include "ft_printf.h"
 
-void	ft_print_decimal(va_list ap)
+int	ft_print_decimal(va_list ap, t_flags flags)
 {
 	int nb;
+	int count;
 
+	(void)flags;
+	count = 0;
 	nb = va_arg(ap, int);
 	ft_putnbr(nb);
+	return (count);
 }

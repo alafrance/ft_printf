@@ -6,15 +6,15 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 15:02:38 by alafranc          #+#    #+#              #
-#    Updated: 2020/12/11 10:50:20 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2020/12/12 19:31:32 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libft_printf.a
+NAME		= libftprintf.a
 
 NAME_LIBFT 	= libft.a
 
-FILES		= ft_printf.c  ft_print_count.c \
+FILES		= ft_printf.c  ft_print_count.c ft_parse.c\
 			  $(addprefix  convert/, ft_print_address.c ft_print_char.c \
 			  	ft_print_string.c ft_print_decimal.c ft_print_udecimal.c ft_print_hexa.c ft_print_hexa_maj.c)
 FILES_BONUS = 
@@ -63,12 +63,13 @@ clean:
 
 fclean:		clean
 			${RM} ${NAME}
+			${RM} ${LIBFT}
 
 re:			fclean all
 
 test:		${NAME}
 			${CC} ${FLAGS} ${SRC} ./srcs/main.c ${NAME} -I includes
 			clear
-			./a.out
+			./a.out | cat -e
 
 .PHONY: all clean fclean re bonus

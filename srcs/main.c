@@ -16,17 +16,9 @@
 int main()
 {
     char *str;
-    int a;
-    int b;
 
-    b = -45;
-    a = 12;
-    str = "coucou";
-
-    printf("%s", NULL);
-    //ft_printf("----ME-----\n");
-    // ft_printf("%s, %c %d %x %X %x %X %u %u %i\n", str, str[0], a, a, a, b, b, a, b, a);
-    //ft_printf("----REAL-----\n");
-    //printf("%s, %c %d %x %X %x %X %u %u %i\n", str, str[0], a, a, a, b, b, a, b, a);
+    ft_printf("%10.*s\n",-1, NULL);
+    printf("%10.*s\n", -1, NULL);
     return (0);
 }
+

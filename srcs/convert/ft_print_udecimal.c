@@ -12,11 +12,12 @@
 
 #include "ft_printf.h"
 
-void	ft_print_udecimal(va_list ap)
+int	ft_print_udecimal(va_list ap, t_flags flags)
 {
 	int			nb;
 	long long	max;
 	int			count;
+	(void)flags;
 
 	max = 4294967296;
 	nb = va_arg(ap, int);
@@ -24,4 +25,5 @@ void	ft_print_udecimal(va_list ap)
 		count = ft_putnbr_hexa_long_count(max + (long long)nb);
 	else
 		count = ft_putnbr_count(nb);
+	return (count);
 }

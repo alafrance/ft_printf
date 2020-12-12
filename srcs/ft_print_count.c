@@ -42,12 +42,18 @@ int	ft_putnbr_count(int nb)
 	+ ft_putchar_1(nb % 10 + '0'));
 }
 
-int	ft_putstr_count(char *str)
+int	ft_putstr_count(char *str, int size)
 {
-	int	i;
+	int		i;
+	char	*null;
 
+	null = "(null)";
 	i = 0;
-	while (str[i])
-		ft_putchar(str[i++]);
+	if (!str)
+		while (i < size && null[i])
+			ft_putchar(null[i++]);
+	else
+		while (str[i] && i < size)
+			ft_putchar(str[i++]);
 	return (i);
 }

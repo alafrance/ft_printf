@@ -12,12 +12,14 @@
 
 #include "ft_printf.h"
 
-void	ft_print_address(va_list ap)
+int	ft_print_address(va_list ap, t_flags flags)
 {
 	long long	addr;
 	int			count;
 
+	(void)flags;
 	addr = (long long)va_arg(ap, char*);
 	ft_putstr("0x");
 	count = ft_putnbr_hexa_long_count(addr);
+	return (count);
 }
