@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:20:14 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/10 17:20:18 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 02:30:18 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ int	ft_print_string(va_list ap, t_flags flags)
 	char	*ptr;
 	int		count;
 	int		size;
-	int		i;
 
 	ptr = va_arg(ap, char *);
 	count = 0;
-	i = 0;
 	if (!ptr && flags.nb_precision < 0 )
 		size = ft_strlen("(null)");
 	else if (ptr && (flags.nb_precision < 0 || flags.nb_precision > (int)ft_strlen(ptr)))

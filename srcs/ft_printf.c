@@ -6,12 +6,13 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:28:19 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/12 19:32:37 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 02:23:06 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+#include <stdio.h>
 int			ft_print_arg(const char *format, va_list ap, t_flags flags)
 {
 	if (*format == 's')
@@ -53,9 +54,7 @@ int			ft_printf(const char *format, ...)
 		ft_init_flags(&flags);
 		if (*format == '%')
 		{
-			format++;
-			format = parse_flags_lmc(format, &flags, ap);
-			format = parse_flags_precision(format, &flags, ap);
+			format = parse(++format, &flags, ap);
 			count += ft_print_arg(format, ap, flags);
 		}
 		else

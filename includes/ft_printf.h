@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:29:22 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/12 19:33:45 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 02:30:39 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include "../libft/libft.h"
-typedef int bool;
 typedef struct  s_flags {
-	bool	display_zero;
-	bool	space_reverse;
+	int     display_zero;
+	int     space_reverse;
 	int		lmc;
 	int		nb_precision;
 }               t_flags;
@@ -40,4 +39,6 @@ int				ft_putnbr_count(int nb);
 const char		*parse_flags_lmc(const char *format, t_flags *flags, va_list ap);
 const char		*parse_flags_precision(const char *format,
 				t_flags *flags, va_list ap);
+const char		*parse(const char *format, t_flags *flags, va_list ap);
+int				ft_display_space(int nb_space);
 #endif

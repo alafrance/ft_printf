@@ -6,11 +6,18 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 19:28:45 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/12 19:33:36 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 01:43:58 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+const char  *parse(const char *format, t_flags *flags, va_list ap)
+{
+	format = parse_flags_lmc(format,flags, ap);
+    format = parse_flags_precision(format, flags, ap);
+	return (format);
+}
 
 const char	*parse_flags_lmc(const char *format, t_flags *flags, va_list ap)
 {
@@ -27,6 +34,11 @@ const char	*parse_flags_lmc(const char *format, t_flags *flags, va_list ap)
 	if (*format == '*')
 	{
 		flags->lmc = va_arg(ap, int);
+		if (flags->lmc < 0)
+		{
+			flags->lmc = -flags->lmc;
+			flags->space_reverse = 1;
+		}
 		format++;
 	}
 	else
