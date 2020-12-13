@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 10:19:46 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/11 14:59:57 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 18:46:30 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_putnbr_hexa_count(int nb)
 	+ ft_putchar_1(nb % 16));
 }
 
-int	ft_putnbr_count(int nb)
+int	ft_putnbr_count(long nb)
 {
 	if (nb < 10)
 		return (ft_putchar_1(nb + '0'));

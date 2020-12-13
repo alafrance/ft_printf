@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:30:09 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/13 02:31:33 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 19:30:52 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #include <stdio.h>
 int main()
 {
-    ft_printf("me : %c\n", 'c');
-    dprintf(1, "real: %c\n", 'c');
-    
+    int nb;
+    int count;
+
+    nb = INT_MAX;
+    ft_printf("me: |%2.12d|\n", -1);
+    printf("ma: |%5.12d|\n", -1);
     return (0);
 }
 

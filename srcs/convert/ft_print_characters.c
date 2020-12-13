@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_print_characters.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:20:14 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/13 02:30:18 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 14:19:29 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,26 @@ int	ft_print_string(va_list ap, t_flags flags)
 		if (flags.lmc > size)
 			count += ft_display_space(flags.lmc - size);
 		count += ft_putstr_count(ptr, size);
+	}
+	return (count);
+}
+
+int	ft_print_char(va_list ap, t_flags flags)
+{
+	char	c;
+	int		count;
+
+	c = va_arg(ap, int);
+	count = 0;
+	if (flags.space_reverse)
+	{
+		count += ft_putchar_1(c);
+		count += ft_display_space(flags.lmc - 1);
+	}
+	else
+	{
+		count += ft_display_space(flags.lmc - 1);
+		count += ft_putchar_1(c);
 	}
 	return (count);
 }
