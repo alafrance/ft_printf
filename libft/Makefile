@@ -6,7 +6,7 @@
 #    By: alafranc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 15:02:38 by alafranc          #+#    #+#              #
-#    Updated: 2020/12/10 16:08:51 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2020/12/14 11:16:48 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ ft_strncmp.c ft_strnstr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 ft_convert_base.c ft_putnbr_base.c ft_maths.c ft_atoi_base.c ft_check_base.c \
-ft_swap.c ft_strrev.c ft_putchar.c ft_putstr.c ft_putnbr.c
+ft_swap.c ft_strrev.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_size_nb.c
 
 CC			= clang
 

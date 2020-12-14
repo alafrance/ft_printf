@@ -6,14 +6,19 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 19:28:45 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/13 01:43:58 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 17:32:17 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+#include <stdio.h>
 const char  *parse(const char *format, t_flags *flags, va_list ap)
 {
+	while (*format == '-')
+	{
+		flags->space_reverse = 1;
+		format++;
+	}
 	format = parse_flags_lmc(format,flags, ap);
     format = parse_flags_precision(format, flags, ap);
 	return (format);

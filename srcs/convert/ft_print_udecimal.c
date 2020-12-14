@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:20:22 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/11 15:33:48 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 11:11:19 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_print_udecimal(va_list ap, t_flags flags)
 	max = 4294967296;
 	nb = va_arg(ap, int);
 	if (nb < 0)
-		count = ft_putnbr_hexa_long_count(max + (long long)nb);
+		count = ft_putnbr_hexa_count(max + (long long)nb);
 	else
 		count = ft_putnbr_count(nb);
 	return (count);

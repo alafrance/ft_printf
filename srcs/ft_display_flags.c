@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hexa_maj.c                                :+:      :+:    :+:   */
+/*   ft_display_flags.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/10 17:20:03 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 11:11:34 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2020/12/14 11:14:01 by alafranc          #+#    #+#             */
+/*   Updated: 2020/12/14 12:13:18 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_hexa_maj(va_list ap, t_flags flags)
+int	ft_display_space(int nb_space)
 {
-	int			nb;
-	long long	max;
-	int			count;
+	int i;
 
-	(void)flags;
-	max = 4294967296;
-	nb = va_arg(ap, int);
-	if (nb < 0)
-		count = ft_putnbr_hexa_count(max + (long long)nb);
-	else
-		count = ft_putnbr_hexa_count(nb);
-	return (count);
+	i = -1;
+	while (++i < nb_space)
+		ft_putchar(' ');
+	return (i);
+}
+
+int ft_display_zero(int nb_zero)
+{
+	int i;
+
+	i = -1;
+	while(++i < nb_zero)
+		ft_putchar('0');
+	return (i);
 }
