@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:29:22 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 12:14:34 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 22:48:07 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,7 @@ const char		*parse_flags_precision(const char *format,
 const char		*parse(const char *format, t_flags *flags, va_list ap);
 int				ft_display_space(int nb_space);
 int				ft_display_zero(int nb_zero);
+int				ft_display_space_unsigned(int nb, int size_nb, t_flags flags);
+int	ft_display_zero_unsigned(int size_nb, t_flags flags);
+
 #endif
