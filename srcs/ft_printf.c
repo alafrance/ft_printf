@@ -6,13 +6,12 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:28:19 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 09:55:36 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 15:36:45 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#include <stdio.h>
 int			ft_print_arg(const char *format, va_list ap, t_flags flags)
 {
 	if (*format == 's')
@@ -22,23 +21,22 @@ int			ft_print_arg(const char *format, va_list ap, t_flags flags)
 	else if (*format == 'd' || *format == 'i')
 		return (ft_print_decimal(ap, flags));
 	else if (*format == 'u')
-		return (ft_print_udecimal(ap, flags));
+		return (ft_print_unsigned(ap, flags, ft_putnbr_count, 10));
 	else if (*format == 'x')
-		return (ft_print_hexa(ap, flags));
+		return (ft_print_unsigned(ap, flags, ft_putnbr_hexa_count, 16));
 	else if (*format == 'X')
-		return (ft_print_hexa_maj(ap, flags));
+		return (ft_print_unsigned(ap, flags, ft_putnbr_hexa_maj_count, 16));
 	else if (*format == 'p')
 		return (ft_print_address(ap, flags));
-	ft_putchar('%');
-	return (1);
+	return (ft_print_rate(flags));
 }
 
 void		ft_init_flags(t_flags *flags)
 {
-		flags->display_zero = 0;
-		flags->space_reverse = 0;
-		flags->lmc = 0;
-		flags->nb_precision = -1;
+	flags->display_zero = 0;
+	flags->space_reverse = 0;
+	flags->lmc = 0;
+	flags->nb_precision = -1;
 }
 
 int			ft_printf(const char *format, ...)

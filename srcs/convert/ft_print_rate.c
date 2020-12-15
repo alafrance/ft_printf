@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_flags.c                                 :+:      :+:    :+:   */
+/*   ft_print_characters.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/14 11:14:01 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 12:13:18 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2020/12/10 17:20:14 by alafranc          #+#    #+#             */
+/*   Updated: 2020/12/15 13:52:17 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_display_space(int nb_space)
+int	ft_print_rate(t_flags flags)
 {
-	int i;
+	int		count;
 
-	i = -1;
-	while (++i < nb_space)
-		ft_putchar(' ');
-	return (i);
-}
-
-int ft_display_zero(int nb_zero)
-{
-	int i;
-
-	i = -1;
-	while(++i < nb_zero)
-		ft_putchar('0');
-	return (i);
+	count = 0;
+	if (flags.space_reverse)
+	{
+		count += ft_putchar_1('%');
+		count += ft_display_space(flags.lmc - 1);
+	}
+	else
+	{
+		count += ft_display_space(flags.lmc - 1);
+		count += ft_putchar_1('%');
+	}
+	return (count);
 }

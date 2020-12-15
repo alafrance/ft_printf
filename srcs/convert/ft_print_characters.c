@@ -6,11 +6,25 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:20:14 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 11:14:13 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 15:39:00 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_init_size(char *ptr, t_flags flags)
+{
+	int size;
+
+	if (!ptr && flags.nb_precision < 0)
+		size = ft_strlen("(null)");
+	else if (ptr && (flags.nb_precision < 0
+				|| flags.nb_precision > (int)ft_strlen(ptr)))
+		size = ft_strlen(ptr);
+	else
+		size = flags.nb_precision;
+	return (size);
+}
 
 int	ft_print_string(va_list ap, t_flags flags)
 {
@@ -20,12 +34,7 @@ int	ft_print_string(va_list ap, t_flags flags)
 
 	ptr = va_arg(ap, char *);
 	count = 0;
-	if (!ptr && flags.nb_precision < 0 )
-		size = ft_strlen("(null)");
-	else if (ptr && (flags.nb_precision < 0 || flags.nb_precision > (int)ft_strlen(ptr)))
-		size = ft_strlen(ptr);
-	else
-		size = flags.nb_precision;
+	size = ft_init_size(ptr, flags);
 	if (flags.space_reverse)
 	{
 		count += ft_putstr_count(ptr, size);
@@ -46,7 +55,7 @@ int	ft_print_char(va_list ap, t_flags flags)
 	char	c;
 	int		count;
 
-	c = va_arg(ap, int);
+	c = (char)va_arg(ap, int);
 	count = 0;
 	if (flags.space_reverse)
 	{

@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:24:28 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 21:49:15 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 10:58:37 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_display_space_decimal(int neg, int nb, int size_nb, t_flags flags)
 		flags.lmc--;
 	if (flags.lmc > size_nb)
 	{
-		if (flags.nb_precision > size_nb || (flags.nb_precision == 0 && nb == 0))
+		if (flags.nb_precision > size_nb
+			|| (flags.nb_precision == 0 && nb == 0))
 			count += ft_display_space(flags.lmc - flags.nb_precision);
 		else
 			count += ft_display_space(flags.lmc - size_nb);
@@ -46,7 +47,7 @@ int	ft_display_zero_decimal(int neg, int size_nb, t_flags flags)
 	return (count);
 }
 
-int ft_display_nb_decimal(long nb, int neg, int size_nb, t_flags flags)
+int	ft_display_nb_decimal(long nb, int neg, int size_nb, t_flags flags)
 {
 	int count;
 
@@ -62,10 +63,10 @@ int ft_display_nb_decimal(long nb, int neg, int size_nb, t_flags flags)
 
 int	ft_print_decimal(va_list ap, t_flags flags)
 {
-	long nb;
-	int size_nb;
-	int count;
-	int neg;
+	long	nb;
+	int		size_nb;
+	int		count;
+	int		neg;
 
 	neg = 0;
 	count = 0;

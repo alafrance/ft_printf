@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_count.c                                   :+:      :+:    :+:   */
+/*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/11 10:19:46 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 22:33:45 by alafranc         ###   ########lyon.fr   */
+/*   Created: 2020/12/15 10:47:29 by alafranc          #+#    #+#             */
+/*   Updated: 2020/12/15 10:50:23 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_display_space(int nb_space)
+{
+	int i;
+
+	i = -1;
+	while (++i < nb_space)
+		ft_putchar(' ');
+	return (i);
+}
+
+int	ft_display_zero(int nb_zero)
+{
+	int i;
+
+	i = -1;
+	while (++i < nb_zero)
+		ft_putchar('0');
+	return (i);
+}
 
 int	ft_putchar_1(char c)
 {

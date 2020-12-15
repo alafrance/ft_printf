@@ -6,31 +6,31 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 19:28:45 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/14 17:32:17 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/15 11:01:38 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-const char  *parse(const char *format, t_flags *flags, va_list ap)
+
+const char	*parse(const char *format, t_flags *flags, va_list ap)
 {
 	while (*format == '-')
 	{
 		flags->space_reverse = 1;
 		format++;
 	}
-	format = parse_flags_lmc(format,flags, ap);
-    format = parse_flags_precision(format, flags, ap);
-	return (format);
-}
-
-const char	*parse_flags_lmc(const char *format, t_flags *flags, va_list ap)
-{
 	if (*format == '0')
 	{
 		flags->display_zero = 1;
 		format++;
 	}
+	format = parse_flags_lmc(format, flags, ap);
+	format = parse_flags_precision(format, flags, ap);
+	return (format);
+}
+
+const char	*parse_flags_lmc(const char *format, t_flags *flags, va_list ap)
+{
 	while (*format == '-')
 	{
 		flags->space_reverse = 1;
