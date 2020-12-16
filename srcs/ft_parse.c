@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 19:28:45 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/15 11:01:38 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 12:06:22 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 const char	*parse(const char *format, t_flags *flags, va_list ap)
 {
-	while (*format == '-')
+	while (*format == '-' || *format == '0')
 	{
-		flags->space_reverse = 1;
-		format++;
-	}
-	if (*format == '0')
-	{
-		flags->display_zero = 1;
+		if (*format == '-')
+			flags->space_reverse = 1;
+		if (*format == '0')
+			flags->display_zero = 1;
 		format++;
 	}
 	format = parse_flags_lmc(format, flags, ap);
@@ -31,11 +29,6 @@ const char	*parse(const char *format, t_flags *flags, va_list ap)
 
 const char	*parse_flags_lmc(const char *format, t_flags *flags, va_list ap)
 {
-	while (*format == '-')
-	{
-		flags->space_reverse = 1;
-		format++;
-	}
 	if (*format == '*')
 	{
 		flags->lmc = va_arg(ap, int);

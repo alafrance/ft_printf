@@ -6,7 +6,7 @@
 #    By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/23 15:02:38 by alafranc          #+#    #+#              #
-#    Updated: 2020/12/15 13:49:40 by alafranc         ###   ########lyon.fr    #
+#    Updated: 2020/12/16 10:17:40 by alafranc         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME		= libftprintf.a
 NAME_LIBFT 	= libft.a
 
 FILES		= ft_printf.c ft_parse.c ft_display.c\
-			  $(addprefix  convert/, ft_print_address.c ft_print_characters.c \
-			  ft_print_unsigned.c ft_print_decimal.c ft_putnbr_hexa.c ft_print_rate.c)
+			  ft_print_address.c ft_print_characters.c \
+			  ft_print_unsigned.c ft_print_decimal.c ft_putnbr_hexa.c ft_print_rate.c
 FILES_BONUS = 
 
 INC_FILES	= ft_printf.h

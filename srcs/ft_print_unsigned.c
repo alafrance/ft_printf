@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 10:18:14 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/15 10:57:23 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 11:59:23 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	ft_print_unsigned(va_list ap, t_flags flags
 	count = 0;
 	nb = va_arg(ap, int);
 	size_nb = ft_size_nb(nb, base);
+	if (flags.nb_precision == 0 && nb == 0)
+		return (ft_zero_exception(flags));
 	if (flags.nb_precision >= 0 || flags.space_reverse)
 		flags.display_zero = 0;
 	if (!flags.space_reverse && !flags.display_zero && flags.lmc > 0)

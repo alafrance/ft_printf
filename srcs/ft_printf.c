@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 13:28:19 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/15 15:36:45 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 13:51:14 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int			ft_print_arg(const char *format, va_list ap, t_flags flags)
 		return (ft_print_unsigned(ap, flags, ft_putnbr_hexa_maj_count, 16));
 	else if (*format == 'p')
 		return (ft_print_address(ap, flags));
-	return (ft_print_rate(flags));
+	else if (*format == '%')
+		return (ft_print_rate(flags));
+	return (0);
 }
 
 void		ft_init_flags(t_flags *flags)
@@ -60,7 +62,8 @@ int			ft_printf(const char *format, ...)
 			ft_putchar_fd(*format, 1);
 			count++;
 		}
-		format++;
+		if (*format)
+			format++;
 	}
 	va_end(ap);
 	return (count);

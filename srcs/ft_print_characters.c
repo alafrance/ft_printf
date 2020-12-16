@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:20:14 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/15 15:39:00 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 11:32:23 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,19 @@ int	ft_print_string(va_list ap, t_flags flags)
 	int		size;
 
 	ptr = va_arg(ap, char *);
+	if (ptr == NULL)
+		ptr = "(null)";
 	count = 0;
 	size = ft_init_size(ptr, flags);
 	if (flags.space_reverse)
-	{
-		count += ft_putstr_count(ptr, size);
-		if (flags.lmc > size)
-			count += ft_display_space(flags.lmc - size);
-	}
-	else
-	{
-		if (flags.lmc > size)
-			count += ft_display_space(flags.lmc - size);
-		count += ft_putstr_count(ptr, size);
-	}
+		flags.display_zero = 0;
+	if (!flags.space_reverse && !flags.display_zero && flags.lmc > size)
+		count += ft_display_space(flags.lmc - size);
+	if (flags.display_zero && flags.lmc > size)
+		count += ft_display_zero(flags.lmc - size);
+	count += ft_putstr_count(ptr, size);
+	if (flags.space_reverse && !flags.display_zero && flags.lmc > size)
+		count += ft_display_space(flags.lmc - size);
 	return (count);
 }
 

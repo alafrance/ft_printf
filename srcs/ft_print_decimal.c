@@ -6,7 +6,7 @@
 /*   By: alafranc <alafranc@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 17:24:28 by alafranc          #+#    #+#             */
-/*   Updated: 2020/12/15 10:58:37 by alafranc         ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 14:05:02 by alafranc         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ int	ft_display_space_decimal(int neg, int nb, int size_nb, t_flags flags)
 		else
 			count += ft_display_space(flags.lmc - size_nb);
 	}
+	return (count);
+}
+
+int	ft_zero_exception(t_flags flags)
+{
+	int count;
+
+	count = 0;
+	if (flags.lmc > 0)
+		count += ft_display_space(flags.lmc);
 	return (count);
 }
 
@@ -77,6 +87,8 @@ int	ft_print_decimal(va_list ap, t_flags flags)
 		neg = 1;
 	}
 	size_nb = ft_size_nb(nb, 10);
+	if (flags.nb_precision == 0 && nb == 0)
+		return (ft_zero_exception(flags));
 	if (flags.nb_precision >= 0 || flags.space_reverse)
 		flags.display_zero = 0;
 	if (!flags.space_reverse && !flags.display_zero && flags.lmc > 0)
